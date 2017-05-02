@@ -145,6 +145,7 @@
 #define MSG_BABYSTEP_Y                      "Babystap Y"
 #define MSG_BABYSTEP_Z                      "Babystap Z"
 #define MSG_ENDSTOP_ABORT                   "Endstop afbr."
+<<<<<<< HEAD
 #define MSG_HEATING_FAILED_LCD              "voorverw. fout"
 #define MSG_ERR_REDUNDANT_TEMP              "Redun. temp fout"
 #define MSG_THERMAL_RUNAWAY                 "Therm. wegloop"
@@ -161,5 +162,17 @@
 #define MSG_DELTA_CALIBRATE_Y               "Kalibreer Y"
 #define MSG_DELTA_CALIBRATE_Z               "Kalibreer Z"
 #define MSG_DELTA_CALIBRATE_CENTER          "Kalibreer Midden"
+=======
+
+#define MSG_RECTRACT                        "Terugtrekken"
+
+#ifdef DELTA_CALIBRATION_MENU
+    #define MSG_DELTA_CALIBRATE             "Delta Calibratie"
+    #define MSG_DELTA_CALIBRATE_X           "Kalibreer X"
+    #define MSG_DELTA_CALIBRATE_Y           "Kalibreer Y"
+    #define MSG_DELTA_CALIBRATE_Z           "Kalibreer Z"
+    #define MSG_DELTA_CALIBRATE_CENTER      "Kalibreer Midden"
+#endif // DELTA_CALIBRATION_MENU
+>>>>>>> therippa/Release
 
 #endif // LANGUAGE_NL_H

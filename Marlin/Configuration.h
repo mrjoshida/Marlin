@@ -86,10 +86,18 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
+<<<<<<< HEAD
 #define STRING_CONFIG_H_AUTHOR "(none, default config)" // Who made the changes.
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 WEBSITE_URL         // will be shown during bootup in line 2
+=======
+
+//#define STRING_VERSION "1.0.2"
+
+#define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
+#define STRING_CONFIG_H_AUTHOR "(FOLGER TECH, 8 i3 Prusa Config)" //Who made the changes.
+>>>>>>> therippa/Release
 
 //
 // *** VENDORS PLEASE READ *****************************************************
@@ -130,12 +138,20 @@
 // The following define selects which electronics board you have.
 // Please choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
+<<<<<<< HEAD
   #define MOTHERBOARD BOARD_RAMPS_14_EFB
 #endif
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
 //#define CUSTOM_MACHINE_NAME "3D Printer"
+=======
+  #define MOTHERBOARD BOARD_RAMPS_13_EFB
+#endif
+
+// Define this to set a custom name for your generic Mendel,
+#define CUSTOM_MENDEL_NAME "Prusa i3"
+>>>>>>> therippa/Release
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -203,6 +219,7 @@
 //===========================================================================
 //============================= Thermal Settings ============================
 //===========================================================================
+<<<<<<< HEAD
 
 /**
  * --NORMAL IS 4.7kohm PULLUP!-- 1kohm pullup can be used on hotend sensor, using correct resistor and table
@@ -254,6 +271,47 @@
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
 #define TEMP_SENSOR_BED 0
+=======
+//
+//--NORMAL IS 4.7kohm PULLUP!-- 1kohm pullup can be used on hotend sensor, using correct resistor and table
+//
+//// Temperature sensor settings:
+// -2 is thermocouple with MAX6675 (only for sensor 0)
+// -1 is thermocouple with AD595
+// 0 is not used
+// 1 is 100k thermistor - best choice for EPCOS 100k (4.7k pullup)
+// 2 is 200k thermistor - ATC Semitec 204GT-2 (4.7k pullup)
+// 3 is Mendel-parts thermistor (4.7k pullup)
+// 4 is 10k thermistor !! do not use it for a hotend. It gives bad resolution at high temp. !!
+// 5 is 100K thermistor - ATC Semitec 104GT-2 (Used in ParCan & J-Head) (4.7k pullup)
+// 6 is 100k EPCOS - Not as accurate as table 1 (created using a fluke thermocouple) (4.7k pullup)
+// 7 is 100k Honeywell thermistor 135-104LAG-J01 (4.7k pullup)
+// 71 is 100k Honeywell thermistor 135-104LAF-J01 (4.7k pullup)
+// 8 is 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup)
+// 9 is 100k GE Sensing AL03006-58.2K-97-G1 (4.7k pullup)
+// 10 is 100k RS thermistor 198-961 (4.7k pullup)
+// 11 is 100k beta 3950 1% thermistor (4.7k pullup)
+// 12 is 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup) (calibrated for Makibox hot bed)
+// 13 is 100k Hisens 3950  1% up to 300°C for hotend "Simple ONE " & "Hotend "All In ONE" 
+// 20 is the PT100 circuit found in the Ultimainboard V2.x
+// 60 is 100k Maker's Tool Works Kapton Bed Thermistor beta=3950
+//
+//    1k ohm pullup tables - This is not normal, you would have to have changed out your 4.7k for 1k
+//                          (but gives greater accuracy and more stable PID)
+// 51 is 100k thermistor - EPCOS (1k pullup)
+// 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
+// 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan & J-Head) (1k pullup)
+//
+// 1047 is Pt1000 with 4k7 pullup
+// 1010 is Pt1000 with 1k pullup (non standard)
+// 147 is Pt100 with 4k7 pullup
+// 110 is Pt100 with 1k pullup (non standard)
+
+#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_1 0
+#define TEMP_SENSOR_2 0
+#define TEMP_SENSOR_BED 1
+>>>>>>> therippa/Release
 
 // Dummy thermistor constant temperature readings, for use with 998 and 999
 #define DUMMY_THERMISTOR_998_VALUE 25
@@ -286,11 +344,18 @@
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
+<<<<<<< HEAD
 #define HEATER_0_MAXTEMP 275
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
 #define BED_MAXTEMP 150
+=======
+#define HEATER_0_MAXTEMP 270
+#define HEATER_1_MAXTEMP 245
+#define HEATER_2_MAXTEMP 245
+#define BED_MAXTEMP 200
+>>>>>>> therippa/Release
 
 //===========================================================================
 //============================= PID Settings ================================
@@ -441,6 +506,7 @@
 // coarse Endstop Settings
 #define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
 
+<<<<<<< HEAD
 #if DISABLED(ENDSTOPPULLUPS)
   // fine endstop settings: Individual pullups. will be ignored if ENDSTOPPULLUPS is defined
   //#define ENDSTOPPULLUP_XMAX
@@ -526,6 +592,26 @@
 #define DEFAULT_YJERK                 20.0
 #define DEFAULT_ZJERK                  0.4
 #define DEFAULT_EJERK                  5.0
+=======
+#ifndef ENDSTOPPULLUPS
+  // fine Enstop settings: Individual Pullups. will be ignord if ENDSTOPPULLUPS is defined
+  #define ENDSTOPPULLUP_XMAX
+  #define ENDSTOPPULLUP_YMAX
+  #define ENDSTOPPULLUP_ZMAX
+  #define ENDSTOPPULLUP_XMIN
+  #define ENDSTOPPULLUP_YMIN
+  //#define ENDSTOPPULLUP_ZMIN
+#endif
+
+#ifdef ENDSTOPPULLUPS
+//  #define ENDSTOPPULLUP_XMAX
+//  #define ENDSTOPPULLUP_YMAX
+//  #define ENDSTOPPULLUP_ZMAX
+  #define ENDSTOPPULLUP_XMIN
+  #define ENDSTOPPULLUP_YMIN
+  #define ENDSTOPPULLUP_ZMIN
+#endif
+>>>>>>> therippa/Release
 
 
 //===========================================================================
@@ -684,6 +770,7 @@
 #define DISABLE_E false // For all extruders
 #define DISABLE_INACTIVE_EXTRUDER true //disable only inactive extruders and keep active extruder enabled
 
+<<<<<<< HEAD
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
@@ -708,17 +795,38 @@
 // Sets direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1, 1]
 #define X_HOME_DIR -1
+=======
+#define INVERT_X_DIR false    // for Mendel set to false, for Orca set to true
+#define INVERT_Y_DIR true    // for Mendel set to true, for Orca set to false
+#define INVERT_Z_DIR true     // for Mendel set to false, for Orca set to true
+#define INVERT_E0_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
+#define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
+#define INVERT_E2_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
+
+// ENDSTOP SETTINGS:
+// Sets direction of endstops when homing; 1=MAX, -1=MIN
+#define X_HOME_DIR 1
+>>>>>>> therippa/Release
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
 
 #define min_software_endstops true // If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  // If true, axis won't move to coordinates greater than the defined lengths below.
 
+<<<<<<< HEAD
 // @section machine
 
 // Travel limits after homing (units are in mm)
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
+=======
+// Travel limits after homing
+#define X_MAX_POS 200
+#define X_MIN_POS 0
+#define Y_MAX_POS 200
+#define Y_MIN_POS 0
+#define Z_MAX_POS 175
+>>>>>>> therippa/Release
 #define Z_MIN_POS 0
 #define X_MAX_POS 200
 #define Y_MAX_POS 200
@@ -935,15 +1043,22 @@
 
 // @section temperature
 
+<<<<<<< HEAD
 // Preheat Constants
 #define PREHEAT_1_TEMP_HOTEND 180
 #define PREHEAT_1_TEMP_BED     70
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
+=======
+//// MOVEMENT SETTINGS
+#define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
+#define HOMING_FEEDRATE {50*60, 50*60, 50, 0}  // set the homing speeds (mm/min)
+>>>>>>> therippa/Release
 
 #define PREHEAT_2_TEMP_HOTEND 240
 #define PREHEAT_2_TEMP_BED    110
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
+<<<<<<< HEAD
 //
 // Nozzle Park -- EXPERIMENTAL
 //
@@ -967,6 +1082,14 @@
   // Specify a park position as { X, Y, Z }
   #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MAX_POS - 10), 20 }
 #endif
+=======
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,4000,90}  // default steps per unit for ultimaker {78.7402,78.7402,200*8/3,760*1.1}920
+#define DEFAULT_MAX_FEEDRATE          {250, 250, 2, 22}    // (mm/sec)    
+#define DEFAULT_MAX_ACCELERATION      {1000,1000,5,1000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+
+#define DEFAULT_ACCELERATION          500    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
+#define DEFAULT_RETRACT_ACCELERATION  500   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
+>>>>>>> therippa/Release
 
 //
 // Clean Nozzle Feature -- EXPERIMENTAL
@@ -1033,6 +1156,7 @@
 // - M77  - Stop the print job timer
 #define PRINTJOB_TIMER_AUTOSTART
 
+<<<<<<< HEAD
 //
 // Print Counter
 //
@@ -1044,6 +1168,18 @@
 //
 // This information can be viewed by the M78 command.
 //#define PRINTCOUNTER
+=======
+// EEPROM
+// The microcontroller can store settings in the EEPROM, e.g. max velocity...
+// M500 - stores parameters in EEPROM
+// M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).
+// M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
+//define this to enable EEPROM support
+#define EEPROM_SETTINGS
+//to disable EEPROM Serial responses and decrease program space by ~1700 byte: comment this out:
+// please keep turned on if you can.
+#define EEPROM_CHITCHAT
+>>>>>>> therippa/Release
 
 //=============================================================================
 //============================= LCD and SD support ============================
@@ -1247,10 +1383,14 @@
 //
 // RepRapDiscount Smart Controller.
 // http://reprap.org/wiki/RepRapDiscount_Smart_Controller
+<<<<<<< HEAD
 //
 // Note: Usually sold with a white PCB.
 //
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
+=======
+#define REPRAP_DISCOUNT_SMART_CONTROLLER
+>>>>>>> therippa/Release
 
 //
 // GADGETS3D G3D LCD/SD Controller

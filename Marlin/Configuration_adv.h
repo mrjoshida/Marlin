@@ -189,7 +189,7 @@
 //This is for controlling a fan to cool down the stepper drivers
 //it will turn on when any driver is enabled
 //and turn off after the set amount of seconds from last driver being disabled again
-#define CONTROLLERFAN_PIN -1 //Pin used for the fan to cool controller (-1 to disable)
+#define CONTROLLERFAN_PIN 23 //Pin used for the fan to cool controller (-1 to disable)
 #define CONTROLLERFAN_SECS 60 //How many seconds, after all motors were disabled, the fan should run
 #define CONTROLLERFAN_SPEED 255  // == full speed
 
@@ -236,7 +236,61 @@
 //============================ Mechanical Settings ==========================
 //===========================================================================
 
+<<<<<<< HEAD
 // @section homing
+=======
+// This defines the number of extruders
+#define EXTRUDERS 1
+
+#define ENDSTOPS_ONLY_FOR_HOMING // If defined the endstops will only be used for homing
+
+
+//// AUTOSET LOCATIONS OF LIMIT SWITCHES
+//// Added by ZetaPhoenix 09-15-2012
+#ifdef MANUAL_HOME_POSITIONS  // Use manual limit switch locations
+  #define X_HOME_POS MANUAL_X_HOME_POS
+  #define Y_HOME_POS MANUAL_Y_HOME_POS
+  #define Z_HOME_POS MANUAL_Z_HOME_POS
+#else //Set min/max homing switch positions based upon homing direction and min/max travel limits
+  //X axis
+  #if X_HOME_DIR == -1
+    #ifdef BED_CENTER_AT_0_0
+      #define X_HOME_POS X_MAX_LENGTH * -0.5
+    #else
+      #define X_HOME_POS X_MIN_POS
+    #endif //BED_CENTER_AT_0_0
+  #else
+    #ifdef BED_CENTER_AT_0_0
+      #define X_HOME_POS X_MAX_LENGTH * 0.5
+    #else
+      #define X_HOME_POS X_MAX_POS
+    #endif //BED_CENTER_AT_0_0
+  #endif //X_HOME_DIR == -1
+
+  //Y axis
+  #if Y_HOME_DIR == -1
+    #ifdef BED_CENTER_AT_0_0
+      #define Y_HOME_POS Y_MAX_LENGTH * -0.5
+    #else
+      #define Y_HOME_POS Y_MIN_POS
+    #endif //BED_CENTER_AT_0_0
+  #else
+    #ifdef BED_CENTER_AT_0_0
+      #define Y_HOME_POS Y_MAX_LENGTH * 0.5
+    #else
+      #define Y_HOME_POS Y_MAX_POS
+    #endif //BED_CENTER_AT_0_0
+  #endif //Y_HOME_DIR == -1
+
+  // Z axis
+  #if Z_HOME_DIR == -1 //BED_CENTER_AT_0_0 not used
+    #define Z_HOME_POS Z_MIN_POS
+  #else
+    #define Z_HOME_POS Z_MAX_POS
+  #endif //Z_HOME_DIR == -1
+#endif //End auto min/max positions
+//END AUTOSET LOCATIONS OF LIMIT SWITCHES -ZP
+>>>>>>> therippa/Release
 
 // If you want endstops to stay on (by default) even when not homing
 // enable this option. Override at any time with M120, M121.
@@ -331,10 +385,16 @@
 // @section homing
 
 //homing hits the endstop, then retracts by this distance, before it tries to slowly bump again:
+<<<<<<< HEAD
 #define X_HOME_BUMP_MM 5
 #define Y_HOME_BUMP_MM 5
 #define Z_HOME_BUMP_MM 2
 #define HOMING_BUMP_DIVISOR {2, 2, 4}  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+=======
+#define X_HOME_RETRACT_MM 5
+#define Y_HOME_RETRACT_MM 5
+#define Z_HOME_RETRACT_MM 3
+>>>>>>> therippa/Release
 //#define QUICK_HOME  //if this is defined, if both x and y are to be homed, a diagonal move will be performed initially.
 
 // When G28 is called, this option will make Y home before X
@@ -677,6 +737,7 @@
   #define RETRACT_RECOVER_FEEDRATE 8     //default feedrate for recovering from retraction (mm/s)
 #endif
 
+<<<<<<< HEAD
 // Add support for experimental filament exchange support M600; requires display
 #if ENABLED(ULTIPANEL)
   // #define FILAMENT_CHANGE_FEATURE             // Enable filament exchange menu and M600 g-code (used for runout sensor too)
@@ -703,6 +764,17 @@
                                                 // Filament can be extruded repeatedly from the filament exchange menu to fill the hotend,
                                                 // or until outcoming filament color is not clear for filament color change
     #define FILAMENT_CHANGE_EXTRUDE_FEEDRATE 3  // Extrude filament feedrate in mm/s - must be slower than load feedrate
+=======
+//adds support for experimental filament exchange support M600; requires display
+#ifdef ULTIPANEL
+  //#define FILAMENTCHANGEENABLE
+  #ifdef FILAMENTCHANGEENABLE
+    #define FILAMENTCHANGE_XPOS 3
+    #define FILAMENTCHANGE_YPOS 3
+    #define FILAMENTCHANGE_ZADD 10
+    #define FILAMENTCHANGE_FIRSTRETRACT -2
+    #define FILAMENTCHANGE_FINALRETRACT -100
+>>>>>>> therippa/Release
   #endif
 #endif
 
